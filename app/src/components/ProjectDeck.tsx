@@ -147,7 +147,7 @@ export default function ProjectDeck() {
             >
               <Sparkles size={13} color="#a855f7" />
               <ShinyText
-                text="REACT BITS 3D CARD STACK"
+                text="INTERACTIVE 3D CARD STACK"
                 speed={4}
                 className=""
               />
