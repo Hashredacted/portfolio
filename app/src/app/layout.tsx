@@ -9,6 +9,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://portfolio-henna-tau-91.vercel.app"),
   title: "Mohammad Afnan Mirza — AI & Full-Stack Developer",
   description:
     "AI and full-stack developer building AI automation, computer vision systems, APIs, SaaS platforms, dashboards, and business web applications.",
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
     description:
       "AI and full-stack developer building AI automation, computer vision systems, APIs, SaaS platforms, dashboards, and business web applications.",
     type: "website",
-    url: "https://github.com/Hashredacted",
+    url: "https://portfolio-henna-tau-91.vercel.app",
   },
   twitter: {
     card: "summary_large_image",

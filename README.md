@@ -16,12 +16,11 @@
 
 <br />
 
-### 🌐 Live Demo: [https://your-portfolio.vercel.app](https://your-portfolio.vercel.app)
-*(Add your live Vercel URL here)*
+### 🌐 Live Demo: [portfolio-henna-tau-91.vercel.app](https://portfolio-henna-tau-91.vercel.app/)
 
 <br />
 
-[🚀 Live Demo (Vercel)](https://your-portfolio.vercel.app) • [GitHub (@Hashredacted)](https://github.com/Hashredacted) • [Services](#-core-services) • [Featured Projects](#-featured-projects)
+[🚀 Live Demo (Vercel)](https://portfolio-henna-tau-91.vercel.app/) • [GitHub (@Hashredacted)](https://github.com/Hashredacted) • [Services](#-core-services) • [Featured Projects](#-featured-projects)
 
 </div>
 
@@ -37,7 +36,7 @@ The interface combines a dark obsidian glassmorphism aesthetic (`#07070d`) with 
 
 ## 🌐 Live Demo & Deployment
 
-- **Vercel Production URL**: [https://your-portfolio.vercel.app](https://your-portfolio.vercel.app) *(Replace with your live Vercel URL)*
+- **Vercel Production URL**: [https://portfolio-henna-tau-91.vercel.app/](https://portfolio-henna-tau-91.vercel.app/)
 - **GitHub Repository**: [https://github.com/Hashredacted/portfolio](https://github.com/Hashredacted/portfolio)
 - **Local Preview**: `http://localhost:3000`
 
