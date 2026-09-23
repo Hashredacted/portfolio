@@ -1,7 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowDown, GitBranch, Mail, ChevronRight } from "lucide-react";
+import { ArrowDown, Mail, ChevronRight } from "lucide-react";
+import Aurora from "./Aurora";
+import Particles from "./Particles";
+import DecryptedText from "./DecryptedText";
+import BlurText from "./BlurText";
+import ShinyText from "./ShinyText";
 
 const capabilities = [
   "AI + Computer Vision",
@@ -27,43 +32,40 @@ export default function Hero() {
         overflow: "hidden",
       }}
     >
-      {/* Background radial glows */}
-      <div
-        style={{
-          position: "absolute",
-          top: "10%",
-          left: "50%",
-          transform: "translateX(-50%)",
-          width: 800,
-          height: 500,
-          background:
-            "radial-gradient(ellipse at center, rgba(99,102,241,0.12) 0%, rgba(139,92,246,0.06) 40%, transparent 70%)",
-          pointerEvents: "none",
-        }}
-      />
-      <div
-        style={{
-          position: "absolute",
-          bottom: "10%",
-          left: "20%",
-          width: 400,
-          height: 400,
-          background:
-            "radial-gradient(ellipse at center, rgba(168,85,247,0.07) 0%, transparent 60%)",
-          pointerEvents: "none",
-        }}
-      />
+      {/* Aurora WebGL background */}
+      <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
+        <Aurora
+          colorStops={["#1e0a4a", "#4f46e5", "#7c3aed"]}
+          amplitude={1.2}
+          blend={0.6}
+          speed={0.4}
+        />
+      </div>
 
-      {/* Grid lines overlay */}
+      {/* Particles floating over aurora */}
+      <div style={{ position: "absolute", inset: 0, zIndex: 1 }}>
+        <Particles
+          particleCount={220}
+          particleSpread={12}
+          speed={0.08}
+          particleColors={["#818cf8", "#a78bfa", "#c084fc", "#e879f9"]}
+          moveParticlesOnHover
+          particleHoverFactor={0.3}
+          alphaParticles
+          particleBaseSize={80}
+          sizeRandomness={0.8}
+        />
+      </div>
+
+      {/* Dark overlay for text readability */}
       <div
         style={{
           position: "absolute",
           inset: 0,
-          backgroundImage:
-            "linear-gradient(rgba(99,102,241,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(99,102,241,0.04) 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
+          zIndex: 2,
+          background:
+            "radial-gradient(ellipse at center, rgba(10,10,15,0.2) 0%, rgba(10,10,15,0.75) 100%)",
           pointerEvents: "none",
-          maskImage: "radial-gradient(ellipse at center, black 30%, transparent 80%)",
         }}
       />
 
@@ -73,7 +75,7 @@ export default function Hero() {
           width: "100%",
           textAlign: "center",
           position: "relative",
-          zIndex: 1,
+          zIndex: 3,
         }}
       >
         {/* Badge */}
@@ -87,9 +89,10 @@ export default function Hero() {
             gap: 8,
             padding: "6px 14px",
             borderRadius: 9999,
-            background: "rgba(99,102,241,0.1)",
-            border: "1px solid rgba(99,102,241,0.25)",
+            background: "rgba(99,102,241,0.12)",
+            border: "1px solid rgba(99,102,241,0.3)",
             marginBottom: 28,
+            backdropFilter: "blur(8px)",
           }}
         >
           <span
@@ -100,15 +103,17 @@ export default function Hero() {
               background: "#22c55e",
               boxShadow: "0 0 8px #22c55e",
               flexShrink: 0,
-              animation: "pulse 2s infinite",
+              animation: "badge-pulse 2s infinite",
             }}
           />
-          <span style={{ fontSize: 12, fontWeight: 500, color: "#a5a3c0", letterSpacing: "0.05em" }}>
-            AVAILABLE FOR FREELANCE PROJECTS
-          </span>
+          <ShinyText
+            text="AVAILABLE FOR FREELANCE PROJECTS"
+            speed={4}
+            className=""
+          />
         </motion.div>
 
-        {/* Name */}
+        {/* Name with DecryptedText */}
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -123,7 +128,18 @@ export default function Hero() {
         >
           <span className="gradient-text-white">Mohammad Afnan</span>
           <br />
-          <span className="gradient-text">Mirza</span>
+          <span className="gradient-text">
+            <DecryptedText
+              text="Mirza"
+              animateOn="view"
+              speed={25}
+              maxIterations={2}
+              sequential
+              revealDirection="start"
+              className="gradient-text"
+              encryptedClassName=""
+            />
+          </span>
         </motion.h1>
 
         {/* Title */}
@@ -139,13 +155,13 @@ export default function Hero() {
             letterSpacing: "0.02em",
           }}
         >
-          AI & Full-Stack Developer
+          AI &amp; Full-Stack Developer
         </motion.p>
 
-        {/* Headline */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+        {/* Headline with BlurText */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           style={{
             fontSize: "clamp(1rem, 2vw, 1.125rem)",
@@ -155,17 +171,18 @@ export default function Hero() {
             lineHeight: 1.7,
           }}
         >
-          I build{" "}
-          <span style={{ color: "#c4b5fd" }}>AI-powered products</span>, backend systems,{" "}
-          <span style={{ color: "#c4b5fd" }}>SaaS applications</span>, dashboards, and automation
-          workflows that solve real business problems.
-        </motion.p>
+          <BlurText
+            text="I build AI-powered products, backend systems, SaaS applications, dashboards, and automation workflows that solve real business problems."
+            delay={0.03}
+            animateOnView={false}
+          />
+        </motion.div>
 
         {/* CTAs */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
+          transition={{ duration: 0.6, delay: 0.7 }}
           style={{
             display: "flex",
             alignItems: "center",
@@ -207,6 +224,7 @@ export default function Hero() {
               border: "1px solid rgba(99,102,241,0.3)",
               color: "#c4b5fd",
               transition: "all 0.3s ease",
+              backdropFilter: "blur(8px)",
             }}
           >
             <Mail size={15} />
@@ -227,10 +245,10 @@ export default function Hero() {
               textDecoration: "none",
               color: "#6b6987",
               transition: "all 0.3s ease",
+              backdropFilter: "blur(8px)",
             }}
             className="btn-outline"
           >
-            <GitBranch size={15} />
             GitHub
           </a>
         </motion.div>
@@ -239,18 +257,20 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.7 }}
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            justifyContent: "center",
-            gap: 8,
-          }}
+          transition={{ duration: 0.8, delay: 0.9 }}
+          style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 8 }}
         >
-          {capabilities.map((cap) => (
-            <span key={cap} className="tag">
+          {capabilities.map((cap, i) => (
+            <motion.span
+              key={cap}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.9 + i * 0.06 }}
+              className="tag"
+              style={{ backdropFilter: "blur(8px)" }}
+            >
               {cap}
-            </span>
+            </motion.span>
           ))}
         </motion.div>
       </div>
@@ -259,7 +279,7 @@ export default function Hero() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.2 }}
+        transition={{ delay: 1.5 }}
         style={{
           position: "absolute",
           bottom: 32,
@@ -270,6 +290,7 @@ export default function Hero() {
           alignItems: "center",
           gap: 4,
           color: "#6b6987",
+          zIndex: 3,
         }}
       >
         <motion.div animate={{ y: [0, 6, 0] }} transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}>
@@ -279,7 +300,7 @@ export default function Hero() {
       </motion.div>
 
       <style>{`
-        @keyframes pulse {
+        @keyframes badge-pulse {
           0%, 100% { opacity: 1; }
           50% { opacity: 0.4; }
         }

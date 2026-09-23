@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 import { Mail, GitBranch, ArrowRight, Copy, CheckCheck } from "lucide-react";
 import { useState } from "react";
+import Aurora from "./Aurora";
+import ShinyText from "./ShinyText";
 
 export default function Contact() {
   const [copied, setCopied] = useState(false);
@@ -22,22 +24,33 @@ export default function Contact() {
         overflow: "hidden",
       }}
     >
-      {/* Background glow */}
+      {/* Aurora background */}
       <div
         style={{
           position: "absolute",
-          bottom: 0,
-          left: "50%",
-          transform: "translateX(-50%)",
-          width: 700,
-          height: 400,
-          background:
-            "radial-gradient(ellipse at center, rgba(99,102,241,0.1) 0%, rgba(139,92,246,0.05) 40%, transparent 70%)",
+          inset: 0,
+          opacity: 0.3,
+          pointerEvents: "none",
+        }}
+      >
+        <Aurora
+          colorStops={["#1a0a3d", "#3730a3", "#6d28d9"]}
+          amplitude={0.8}
+          blend={0.7}
+          speed={0.25}
+        />
+      </div>
+      {/* Dark overlay */}
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          background: "rgba(10,10,15,0.6)",
           pointerEvents: "none",
         }}
       />
 
-      <div style={{ maxWidth: 700, margin: "0 auto", textAlign: "center", position: "relative" }}>
+      <div style={{ maxWidth: 700, margin: "0 auto", textAlign: "center", position: "relative", zIndex: 1 }}>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -66,7 +79,7 @@ export default function Contact() {
             }}
             className="gradient-text-white"
           >
-            Let&apos;s Build Something
+            <ShinyText text="Let's Build Something" speed={4} />
           </h2>
           <p
             style={{

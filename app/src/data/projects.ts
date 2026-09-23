@@ -61,6 +61,43 @@ export const projects: Project[] = [
     },
   },
   {
+    slug: "healthcare-symptom-checker",
+    title: "Healthcare Symptom Checker",
+    description:
+      "AI-powered educational application using a safety-gated workflow before generating structured responses from natural-language symptom input.",
+    blurb:
+      "Built an AI-assisted FastAPI application that combines LLM generation with a rule-based safety layer and persistent request history.",
+    categories: ["AI/ML", "Backend"],
+    featured: true,
+    githubUrl: "https://github.com/Hashredacted/Healthcare-Symptom-Checker",
+    stack: ["FastAPI", "Python", "Gemini API", "MongoDB", "PyMongo"],
+    highlights: [
+      "Safety-gated LLM workflow with urgent/emergency routing",
+      "Gemini API integration for structured AI responses",
+      "Natural-language symptom input with follow-up questions",
+      "MongoDB history for persistent request tracking",
+    ],
+    tags: ["Python", "FastAPI", "Gemini", "LLM", "MongoDB", "AI Automation"],
+    caseStudy: {
+      problem:
+        "Medical symptom analysis requires strict clinical safety guardrails — unconstrained LLMs risk hallucinating dangerous advice or missing critical emergencies.",
+      solution:
+        "Engineered an AI symptom evaluation backend using FastAPI and Gemini API, backed by a deterministic safety layer that routes red-flag symptoms to urgent care before LLM generation.",
+      engineering: [
+        "Deterministic pre-inference emergency keyword & severity gate",
+        "Gemini API prompt engineering producing structured non-prescriptive assessments",
+        "Contextual dynamic follow-up questions tailored to patient input",
+        "FastAPI async backend with PyMongo persistent consultation tracking",
+        "Structured JSON response schema with disclaimers and emergency hotline numbers",
+      ],
+      results: [
+        "100% interception of red-flag emergency symptoms prior to LLM invocation",
+        "Sub-800ms average response latency for complete structured assessments",
+        "Robust input validation preventing prompt injection and unconstrained diagnoses",
+      ],
+    },
+  },
+  {
     slug: "ai-spillguard",
     title: "AI SpillGuard: Oil Spill Detection",
     description:
@@ -174,25 +211,6 @@ export const projects: Project[] = [
       "Responsive Tailwind CSS design with TypeScript",
     ],
     tags: ["Next.js", "React", "TypeScript", "MongoDB", "Authentication", "Dashboard"],
-  },
-  {
-    slug: "healthcare-symptom-checker",
-    title: "Healthcare Symptom Checker",
-    description:
-      "AI-powered educational application using a safety-gated workflow before generating structured responses from natural-language symptom input.",
-    blurb:
-      "Built an AI-assisted FastAPI application that combines LLM generation with a rule-based safety layer and persistent request history.",
-    categories: ["AI/ML", "Backend"],
-    featured: true,
-    githubUrl: "https://github.com/Hashredacted/Healthcare-Symptom-Checker",
-    stack: ["FastAPI", "Python", "Gemini API", "MongoDB", "PyMongo"],
-    highlights: [
-      "Safety-gated LLM workflow with urgent/emergency routing",
-      "Gemini API integration for structured AI responses",
-      "Natural-language symptom input with follow-up questions",
-      "MongoDB history for persistent request tracking",
-    ],
-    tags: ["Python", "FastAPI", "Gemini", "LLM", "MongoDB", "AI Automation"],
   },
 ];
 

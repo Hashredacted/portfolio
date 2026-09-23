@@ -1,5 +1,7 @@
 "use client";
 
+import React from "react";
+
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -10,10 +12,15 @@ import {
   ChevronRight,
   Layers,
   Zap,
+  Globe,
+  LayoutGrid,
 } from "lucide-react";
 import { projects, secondaryProjects, type Project } from "@/data/projects";
+import SpotlightCard from "./SpotlightCard";
+import DecryptedText from "./DecryptedText";
+import InfiniteMenu, { type InfiniteMenuItem } from "./InfiniteMenu";
 
-function CaseStudyModal({ project, onClose }: { project: Project; onClose: () => void }) {
+export function CaseStudyModal({ project, onClose }: { project: Project; onClose: () => void }) {
   const cs = project.caseStudy!;
   return (
     <AnimatePresence>
@@ -271,17 +278,17 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: index * 0.07 }}
-        className="card-glass"
-        style={{
-          borderRadius: 18,
-          padding: 28,
-          display: "flex",
-          flexDirection: "column",
-          position: "relative",
-          overflow: "hidden",
-          height: "100%",
-        }}
+        style={{ height: "100%" }}
       >
+        <SpotlightCard
+          spotlightColor="rgba(139, 92, 246, 0.2)"
+          style={{
+            padding: 28,
+            display: "flex",
+            flexDirection: "column",
+            height: "100%",
+          } as React.CSSProperties}
+        >
         {/* Number */}
         <div
           style={{
@@ -433,6 +440,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
             </button>
           )}
         </div>
+        </SpotlightCard>
       </motion.div>
 
       {showCaseStudy && (
@@ -442,7 +450,32 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
   );
 }
 
+const projectImages: Record<string, string> = {
+  "workspace-erp": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop",
+  "healthcare-symptom-checker": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=800&auto=format&fit=crop",
+  "ai-spillguard": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=800&auto=format&fit=crop",
+  "knickknack-shop": "https://images.unsplash.com/photo-1556742049-0a67e5572246?q=80&w=800&auto=format&fit=crop",
+  "raizada-compusoft": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop",
+  "school-management": "https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=800&auto=format&fit=crop",
+  "oil-spill-cnn": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop",
+  "face-emotion-detection": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop",
+};
+
+const featuredMenuItems: InfiniteMenuItem[] = projects.map((p) => ({
+  image: projectImages[p.slug] || "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop",
+  link: p.liveUrl || p.githubUrl,
+  title: p.title,
+  description: p.blurb || p.description,
+  slug: p.slug,
+  categories: p.categories,
+  stack: p.stack,
+  caseStudy: p.caseStudy,
+}));
+
 export default function Projects() {
+  const [viewMode, setViewMode] = useState<"sphere" | "grid">("sphere");
+  const [activeModalProject, setActiveModalProject] = useState<Project | null>(null);
+
   return (
     <section
       id="projects"
@@ -457,7 +490,7 @@ export default function Projects() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          style={{ textAlign: "center", marginBottom: 64 }}
+          style={{ textAlign: "center", marginBottom: 36 }}
         >
           <p
             style={{
@@ -480,27 +513,139 @@ export default function Projects() {
             }}
             className="gradient-text-white"
           >
-            Featured Projects
+            <DecryptedText
+              text="Featured Projects"
+              animateOn="view"
+              speed={20}
+              maxIterations={2}
+              sequential
+              revealDirection="start"
+              className="gradient-text-white"
+              encryptedClassName=""
+            />
           </h2>
-          <p style={{ fontSize: 16, color: "#6b6987", maxWidth: 500, margin: "0 auto", lineHeight: 1.7 }}>
+          <p style={{ fontSize: 16, color: "#6b6987", maxWidth: 500, margin: "0 auto 28px", lineHeight: 1.7 }}>
             Production-grade systems that demonstrate commercially useful engineering — from AI and computer vision to
             multi-tenant SaaS and e-commerce.
           </p>
+
+          {/* View switcher: 3D Sphere vs Grid */}
+          <div
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 6,
+              padding: "4px",
+              borderRadius: 12,
+              background: "rgba(18,18,32,0.8)",
+              border: "1px solid rgba(99,102,241,0.2)",
+            }}
+          >
+            <button
+              onClick={() => setViewMode("sphere")}
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 8,
+                padding: "8px 16px",
+                borderRadius: 8,
+                fontSize: 13,
+                fontWeight: 600,
+                border: "none",
+                cursor: "pointer",
+                background: viewMode === "sphere" ? "linear-gradient(135deg, #6366f1, #8b5cf6)" : "transparent",
+                color: viewMode === "sphere" ? "#ffffff" : "#8b89a8",
+                transition: "all 0.2s ease",
+              }}
+            >
+              <Globe size={15} />
+              3D Sphere View
+            </button>
+            <button
+              onClick={() => setViewMode("grid")}
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 8,
+                padding: "8px 16px",
+                borderRadius: 8,
+                fontSize: 13,
+                fontWeight: 600,
+                border: "none",
+                cursor: "pointer",
+                background: viewMode === "grid" ? "linear-gradient(135deg, #6366f1, #8b5cf6)" : "transparent",
+                color: viewMode === "grid" ? "#ffffff" : "#8b89a8",
+                transition: "all 0.2s ease",
+              }}
+            >
+              <LayoutGrid size={15} />
+              Grid View
+            </button>
+          </div>
         </motion.div>
 
-        {/* Project Grid */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))",
-            gap: 20,
-            marginBottom: 72,
-          }}
-        >
-          {projects.map((project, i) => (
-            <ProjectCard key={project.slug} project={project} index={i} />
-          ))}
-        </div>
+        {/* 3D Sphere View (Default) */}
+        {viewMode === "sphere" ? (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.4 }}
+            style={{ marginBottom: 72 }}
+          >
+            <div
+              style={{
+                height: "600px",
+                position: "relative",
+                width: "100%",
+                borderRadius: 20,
+                overflow: "hidden",
+                boxShadow: "0 25px 60px -15px rgba(0,0,0,0.8), 0 0 40px rgba(99,102,241,0.15)",
+              }}
+            >
+              <InfiniteMenu
+                items={featuredMenuItems}
+                scale={1.05}
+                backgroundColor="#0a0a12"
+                onItemSelect={(item) => {
+                  const match = projects.find((p) => p.slug === item.slug);
+                  if (match?.caseStudy) {
+                    setActiveModalProject(match);
+                  } else if (item.link) {
+                    window.open(item.link, "_blank");
+                  }
+                }}
+              />
+            </div>
+
+            <p style={{ textAlign: "center", fontSize: 13, color: "#6b6987", marginTop: 14 }}>
+              Drag or flick to rotate the 3D orbital sphere • Click ↗ on any project disc to open details
+            </p>
+          </motion.div>
+        ) : (
+          /* Grid View */
+          <motion.div
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.4 }}
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))",
+              gap: 20,
+              marginBottom: 72,
+            }}
+          >
+            {projects.map((project, i) => (
+              <ProjectCard key={project.slug} project={project} index={i} />
+            ))}
+          </motion.div>
+        )}
+
+        {activeModalProject && (
+          <CaseStudyModal
+            project={activeModalProject}
+            onClose={() => setActiveModalProject(null)}
+          />
+        )}
 
         {/* Secondary projects */}
         <motion.div

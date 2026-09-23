@@ -1,6 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
+import BlurText from "./BlurText";
+import DecryptedText from "./DecryptedText";
 
 const skillGroups = [
   {
@@ -125,7 +127,16 @@ export default function Skills() {
               }}
               className="gradient-text-white"
             >
-              AI & Full-Stack Developer
+              <DecryptedText
+                text="AI & Full-Stack Developer"
+                animateOn="view"
+                speed={20}
+                maxIterations={2}
+                sequential
+                revealDirection="start"
+                className="gradient-text-white"
+                encryptedClassName=""
+              />
             </h2>
             <div
               style={{
@@ -137,19 +148,21 @@ export default function Skills() {
                 lineHeight: 1.8,
               }}
             >
-              <p>
-                I build <span style={{ color: "#c4b5fd" }}>AI-powered products</span>, backend APIs, SaaS platforms,
-                and full-stack web applications — with a focus on practical business outcomes, not academic demos.
-              </p>
-              <p>
-                My work spans deep learning computer vision (U-Net segmentation with 97% accuracy), multi-tenant SaaS
-                ERP systems, production e-commerce platforms with Stripe, and AI-assisted FastAPI backends with LLM
-                integration.
-              </p>
-              <p>
-                I lead with <span style={{ color: "#c4b5fd" }}>AI, backend engineering, and SaaS product
-                development</span> — and ship deployment-ready systems from database to UI.
-              </p>
+              <BlurText
+                text="I build AI-powered products, backend APIs, SaaS platforms, and full-stack web applications — with a focus on practical business outcomes, not academic demos."
+                delay={0.025}
+                style={{ color: "#6b6987", fontSize: 15, lineHeight: 1.8 }}
+              />
+              <BlurText
+                text="My work spans deep learning computer vision (U-Net segmentation with 97% accuracy), multi-tenant SaaS ERP systems, production e-commerce platforms with Stripe, and AI-assisted FastAPI backends with LLM integration."
+                delay={0.02}
+                style={{ color: "#6b6987", fontSize: 15, lineHeight: 1.8 }}
+              />
+              <BlurText
+                text="I lead with AI, backend engineering, and SaaS product development — and ship deployment-ready systems from database to UI."
+                delay={0.025}
+                style={{ color: "#6b6987", fontSize: 15, lineHeight: 1.8 }}
+              />
             </div>
 
             <div
