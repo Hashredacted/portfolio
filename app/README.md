@@ -8,12 +8,20 @@
 ![GSAP](https://img.shields.io/badge/GSAP-Animation-green?style=for-the-badge&logo=greensock)
 ![WebGL 2](https://img.shields.io/badge/WebGL-2.0%203D-990000?style=for-the-badge&logo=webgl)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-38B2AC?style=for-the-badge&logo=tailwind-css)
+![Vercel](https://img.shields.io/badge/Vercel-Deployed-black?style=for-the-badge&logo=vercel)
 
 <br />
 
-**A state-of-the-art, client-converting Upwork freelance portfolio featuring interactive WebGL shaders, 3D physics stacks, and animations inspired by [React Bits](https://reactbits.dev).**
+**A state-of-the-art, client-converting Upwork freelance portfolio featuring interactive WebGL shaders, 3D physics stacks, and modern interactive UI animations.**
 
-[Live Local Demo](http://localhost:3000) • [GitHub (@Hashredacted)](https://github.com/Hashredacted) • [Services](#-core-services) • [Featured Projects](#-featured-projects)
+<br />
+
+### 🌐 Live Demo: [https://your-portfolio.vercel.app](https://your-portfolio.vercel.app)
+*(Add your live Vercel URL here)*
+
+<br />
+
+[🚀 Live Demo (Vercel)](https://your-portfolio.vercel.app) • [GitHub (@Hashredacted)](https://github.com/Hashredacted) • [Services](#-core-services) • [Featured Projects](#-featured-projects)
 
 </div>
 
@@ -27,9 +35,17 @@ The interface combines a dark obsidian glassmorphism aesthetic (`#07070d`) with 
 
 ---
 
-## ✨ React Bits Interactive Components & Shaders
+## 🌐 Live Demo & Deployment
 
-The application integrates production-grade components inspired by **React Bits**:
+- **Vercel Production URL**: [https://your-portfolio.vercel.app](https://your-portfolio.vercel.app) *(Replace with your live Vercel URL)*
+- **GitHub Repository**: [https://github.com/Hashredacted/portfolio](https://github.com/Hashredacted/portfolio)
+- **Local Preview**: `http://localhost:3000`
+
+---
+
+## ✨ Interactive Components & Shaders
+
+The application integrates production-grade components and dynamic visual effects:
 
 | Component / Effect | Where It's Used | Technology | Interactive Behavior |
 |---|---|---|---|
@@ -72,7 +88,7 @@ portfolio/
     │   │   ├── BounceCards.tsx   # GSAP elastic card fan with push physics
     │   │   ├── BounceCards.css   # Responsive card stacking geometry & hover glow
     │   │   ├── ProjectDeck.tsx   # Interactive 3D GSAP card deck section
-    │   │   ├── CardSwap.tsx      # React Bits 3D GSAP card swap component
+    │   │   ├── CardSwap.tsx      # Interactive 3D GSAP card swap component
     │   │   ├── CardSwap.css      # 3D perspective & geometry styles
     │   │   ├── Projects.tsx      # Dual-tab view: WebGL 3D Orbital Sphere vs Grid View
     │   │   ├── InfiniteMenu.tsx  # WebGL 2 3D orbital sphere menu
