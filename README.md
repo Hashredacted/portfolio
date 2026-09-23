@@ -96,6 +96,30 @@ portfolio/
 
 ---
 
+## 💼 Core Services
+
+1. **AI & Agentic Automation**: LLM integrations, autonomous agentic workflows, function calling, custom prompt pipelines with Gemini API & OpenAI.
+2. **Computer Vision & Deep Learning**: Custom model training and inference pipelines (U-Net, OpenCV, TensorFlow, Keras), object detection, and segmentation.
+3. **High-Performance Backend APIs**: Production REST & streaming APIs with FastAPI, Node.js/Express, JWT authentication, RBAC, MongoDB, and Redis.
+4. **Full-Stack Web Applications**: Modern reactive web apps built with Next.js 16, React 19, TypeScript, and Tailwind CSS.
+5. **Multi-Tenant SaaS / ERP Systems**: Complex business software featuring multi-tenant data isolation, billing, inventory, invoicing, and reporting.
+6. **AI Business Tools**: Intelligent copilots, clinical symptom diagnostic assistants, smart recommendation engines, and automation bots.
+
+---
+
+## 🚀 Featured Projects & Case Studies
+
+Each featured project includes an interactive case study modal outlining the **Problem**, **Solution**, **Key Metrics**, and **Engineering Work**:
+
+- **WorkSpace — Multi-Tenant SaaS & Inventory ERP**: Multi-tenant platform with RBAC, invoicing, inventory tracking, payments, and automated financial reporting.
+- **Healthcare Symptom Checker & AI Triage**: AI clinical decision support system integrating symptom parsing, triage level categorization, and doctor consultation workflows.
+- **Agentic AI Automation & LLM Workflows**: Autonomous task runner utilizing function calling, tool use, and multi-step reasoning pipelines.
+- **Deep Learning Oil Spill Segmentation**: Satellite imagery semantic segmentation using custom U-Net architectures for environmental monitoring.
+- **Face Emotion Recognition & Biometrics**: Real-time webcam facial expression analysis using CNNs and OpenCV.
+- **FastAPI Production Microservices**: High-throughput asynchronous backend service with JWT authentication, rate limiting, and Docker deployment.
+
+---
+
 ## 💻 Getting Started Locally
 
 ### Prerequisites
@@ -104,8 +128,9 @@ portfolio/
 
 ### Installation
 
-1. Navigate to the `app` directory:
+1. Clone the repository:
    ```bash
+   git clone https://github.com/Hashredacted/portfolio.git
    cd portfolio/app
    ```
 
@@ -140,3 +165,13 @@ npm run start
 - **3D Graphics & Shaders**: [WebGL 2.0](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext), [gl-matrix](https://glmatrix.net/)
 - **Styling**: [Tailwind CSS 4](https://tailwindcss.com/) & Modern Vanilla CSS Design Tokens
 - **Icons**: [Lucide React](https://lucide.dev/)
+
+---
+
+## 📬 Contact & Hire
+
+- **Name**: Mohammad Afnan Mirza
+- **Role**: AI & Full-Stack Developer
+- **GitHub**: [@Hashredacted](https://github.com/Hashredacted)
+- **Email**: Direct 1-click copy available on the portfolio
+- **Upwork**: Open for contracts, AI integrations, MVP development, and full-stack engineering.
